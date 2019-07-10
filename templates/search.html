@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<div class="container">
+  <h1><i>Results:</i></h1>
+  <br>
+  {% for i in range(size) %}
+  <div class="row container" style="background-color:burlywood;padding: 1em;border-radius: 1em;">
+    <div class=" col-4 col-md-2">
+      <a href="/movie/{{ results[i].id }}">
+        <img class="clickable" style="width:100%" src={{ results[i].poster_path }}>
+      </a>
+    </div>
+    <div class="col-8 col-md-10">
+      <h2 "><a style=" color:black;" href="/movie/{{ results[i].id }}">{{ results[i].title }}</a></h2>
+      <p>{{ results[i].overview }}</p>
+      <a class="btn btn-success btn" href="/movie/{{ results[i].id }}" role="button">More info</a>
+    </div>
+  </div>
+  <br>
+  {% endfor %}
+</div>
+{% endblock %}

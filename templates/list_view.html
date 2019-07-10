@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header style="padding:5 5 5 5px;background-color:rgba(100,100,2, 0.5);">
+	<br>
+	<h5 style="text-align: center"><b>{{ name|upper }}</b> Movies Listing</h5>
+	<br>
+</header>
+
+{% if size > 0 %}
+
+
+<div class="row" style="padding: 1em">
+	{% for movie in list_movies %}
+	<div style="padding-right: .15%; padding-left: .15%;" class="col-4 col-md-2">
+		<a href="/movie/{{ movie.MovieId }}" title="{{ movie.MovieName }}">
+			<img class="clickable" style="width: 100%" src={{ movie.PosterUrl }}>
+		</a>
+		<h5><a href="/movie/{{ movie.MovieId }}" style="color:black">{{movie.MovieName}}</a></h5>
+		<br>
+		<form action="/remove/{{name}}/{{movie.MovieId}}" method="post">
+			<button class="btn btn-outline-primary my-2 my-sm-0" type="submit"
+				style="color:black; border:0px;background-color:rgba(129, 36, 206, 0.705)">Remove</button>
+		</form>
+	</div>
+	{% endfor %}
+</div>
+{% else %}
+
+<div class="container" style="float:center;padding: 2em;">
+	<center>
+		<h2>No Movies added Yet!</h2>
+		<br>
+		<a href="/popular"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit"
+				style="color:black; border:0px;background-color:rgba(54, 187, 158, 0.705);text-size-adjust: 1em;">Add
+				Movies</button></a>
+	</center>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

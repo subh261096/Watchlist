@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <div class="text-center">
+  <h4 style>Create a list...</h4>
+  {% if session['logged_in'] == True %}
+  <a class="btn btn-primary btn-lg" href="{{ url_for('new_list') }}">New List
+  </a>
+  {% else %}
+  <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">New List</a>
+  {% endif %}
+
+</div> -->
+<div class="container-fluid " style="background-color: grey; padding:1em;">
+  <div class="text-left" style="color:white;">
+    <h4><b> Now Trending ! </b></h4>
+  </div>
+  <div class="row">
+    {% for mov in top_movies %}
+    <div style="padding-right: .15%; padding-left: .15%;" class="col-4 col-md-2">
+      <a href="/movie/{{ mov.id }}" title="{{ mov.title }}">
+        <img class="clickable" style="width: 100%" src={{ mov.poster_path }}>
+      </a>
+      <br>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

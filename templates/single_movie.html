@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+	.checked {
+		color: orange;
+	}
+
+	label {
+		font-family: sans-serif;
+		font-size: 1rem;
+		padding-right: 10px;
+		border-radius: 1em;
+	}
+
+	select {
+		font-size: .9rem;
+		padding: 2px 5px;
+	}
+</style>
+<br>
+
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-2 col-md-3">
+			<img style="width:100%" src="{{ movie.poster_path }}">
+		</div>
+
+		<div class=" col-2 col-md-8">
+			<h2>{{ movie.title }}</h2>
+			<p class="text-muted">Release Date: {{ movie.release_date }}</p>
+
+			<p class="text-muted">Rating: {{ movie['vote_average'] }}</p>
+			<p>
+				{% for __ in range((movie.vote_average/1)|int) %}
+				<span class="fa fa-star checked"></span>
+				{% endfor %}
+				{% if (movie['vote_average']%1>=0.5) %}
+				<span class="fa fa-star-half-o checked"></span>
+				{% for __ in range(10-((movie.vote_average/1)|int)-1) %}
+				<span class="fa fa-star"></span>
+				{% endfor %}
+				{% else %}
+				{% for __ in range(10-((movie.vote_average/1)|int)) %}
+				<span class="fa fa-star"></span>
+				{% endfor %}
+				{% endif %}
+			</p>
+			<p>
+				Genres:
+				{% for gen in movie['genres'] %}
+				<a href="/movie_genre/{{gen['id']}}/{{gen['name']}}"><span>{{ gen['name'] }}</span></a>
+				{% endfor %}
+			</p>
+			<p>
+				<h3><i>Overview</i></h3>
+			</p>
+			<p>{{ movie.overview }}
+			</p>
+			{% if movie_added==0 %}
+			{% if wls.count() >= 0 and session['logged_in'] %}
+			<div class="row">
+				<div class="col-sm-2">
+
+					<form style="margin: 0; padding: 0;" method="post" action="/movie/{{  movie.id }}">
+
+						<select id="list_name" name="list_name">
+							<option value="">Please choose Listing</option>
+							{% for l in wls %}
+							<option value="{{ l|join('') }}">{{ l|join('')|upper }}</option>
+							{% endfor %}
+						</select>
+						</br>
+						</br>
+						<button type="submit" class="btn btn-primary">Add to list</button>
+					</form>
+				</div>
+
+			</div>
+			{% endif %}
+			{% else %}
+			<p>Already added</p>
+			{% endif %}
+		</div>
+	</div>
+	<br>
+	<div style="background-color: rgba(30, 175, 201, 0.2);border-radius: 1em;padding:1em;width: relative">
+		<header>
+			<h2>Trailers:</h2>
+		</header>
+		{% for id in movie['video_url'] %}
+		<iframe width="320" height="315" src="{{ id }}">
+		</iframe>
+		{% endfor %}
+	</div>
+	<hr>
+</div>
+{% endblock %}
