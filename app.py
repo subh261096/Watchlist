@@ -6,6 +6,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps, partial
 from sqlalchemy import DateTime
 from datetime import timedelta
+import psycopg2
 import datetime
 import tmdb
 
@@ -15,7 +16,8 @@ app = Flask(__name__)
 
 
 ######################################### CONFIGRATION OF DATABSE ######################################
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pre-registration'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://abvdwrffnttkhp:dc25c56efcc6d2a5319ede44466ce1db3ec2a0fffc67810036cd8589fc5fc782@ec2-75-101-128-10.compute-1.amazonaws.com:5432\
+/d4dakab93g4h6j'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = 'subh261096'
 db = SQLAlchemy(app)
