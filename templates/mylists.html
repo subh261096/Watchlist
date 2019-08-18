@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+	.row.card:hover {
+		background-color: rgba(109, 146, 224, 0.8);
+	}
+</style>
+<div class="container-fluid" style="background-color: rgba(255, 255, 255, 0.575);padding:10px;height:40em">
+	<br>
+	<center>
+		<h3>Your Movie Listings </h3>
+	</center>
+	<br>
+	<div class="row">
+		{% if lists_info |length > 0 %}
+		{% for l in lists_info %}
+
+		<div style="padding: 1.5%; background-color:rgba(177, 194, 81, 0.575);margin:10px;border-radius: 10px"
+			class="card col-4 col-md-2">
+			<h5 class="card-title">{{ l.ListName|upper }}</h5>
+			<p class="card-text text-muted">Created: {{ l.LastModifiedDate }}</p>
+			<a href="/mylists/{{ l.ListName }}" class="btn btn-success">View</a>
+			<br>
+		</div>
+		{% endfor %}
+	</div>
+
+	{% else %}
+	<p>No lists found, create a list</p>
+	{% endif %}
+	<br>
+	<a class="btn btn-primary btn-lg" href="{{ url_for('new_list') }}" role="button">New List</a>
+
+</div>
+{% endblock %}
