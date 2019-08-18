@@ -6,18 +6,18 @@
 <div class="container">
   <h5>Here are today's popular films:</h5>
   <br>
-  {% for i in range(10) %}
+  {% for mov in top_movies %}
   <div class="container row">
     <div class="col-4 col-md-2">
       <a href="#">
-        <img class="clickable" style="width:100%" src={{ top_movies[i].poster_path }}>
+        <img class="clickable" style="width:100%" src={{ mov.poster_path }}>
       </a>
     </div>
     <div class="col-8 col-md-10">
-      <a href="/movie/{{ top_movies[i].id }}" style="color:black;">
-        <h2>{{ top_movies[i].title }}</h2>
+      <a href="/movie/{{ mov.id }}" style="color:black;">
+        <h2>{{ mov.title }}</h2>
       </a>
-      <p>{{ top_movies[i].overview }}</p>
+      <p>{{ mov.overview }}</p>
     </div>
   </div>
   <hr>
