@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 
 ######################################### CONFIGRATION OF DATABSE ######################################
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pre-registration'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Subh@261096@localhost/movie'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = 'subh261096'
 db = SQLAlchemy(app)
