@@ -2,7 +2,7 @@ import json
 import urllib.request as urllib2
 import random
 
-api_key = 'a9208ac3456b9d95b3940bef884427d2'
+api_key = '77c8c8e7797a4c0eb655c2a0c0eba9ed'
 api_url = 'https://api.themoviedb.org/3/'
 
 
