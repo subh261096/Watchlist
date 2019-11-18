@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 
 ######################################### CONFIGRATION OF DATABSE ######################################
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://abvdwrffnttkhp:dc25c56efcc6d2a5319ede44466ce1db3ec2a0fffc67810036cd8589fc5fc782@ec2-75-101-128-10.compute-1.amazonaws.com:5432/d4dakab93g4h6j'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://pfvtfguunxsxip:a09c989ea978c946c6ddc5d0bbb0ddd037a6fe32baaea702c73f57751d963c99@ec2-23-21-87-183.compute-1.amazonaws.com:5432/d6aqp7k4gksvqg'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = 'subh261096'
 db = SQLAlchemy(app)
