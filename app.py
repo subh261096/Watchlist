@@ -304,7 +304,7 @@ def film_view(id):
             flash("You must select a choice from your watchlists")
             return render_template("single_movie.html", movie=movie,wls=wls)
         uid = session['uid']
-        if (UserMovie.query.filter_by(List=list_name,MovieId=movie['id']).count()>0):
+        if (UserMovie.query.filter_by(List=list_name,MovieId=str(movie['id'])).count()>0):
             flash("%s is already in %s list!" % (movie['title'],list_name))
             return redirect(url_for("film_view", id=movie['id']))
         data_model = UserMovie(List=list_name, MovieId=movie['id'], PosterUrl=movie['poster_path'],MovieName=movie['title'])
