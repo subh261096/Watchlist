@@ -9,7 +9,7 @@
   {% for mov in top_movies %}
   <div class="container row">
     <div class="col-4 col-md-2">
-      <a href="/movie/{{ top_movies[i].id }}">
+      <a href="/movie/{{ mov.id }}">
         <img class="clickable" style="width:100%" src={{ mov.poster_path }}>
       </a>
     </div>

@@ -7,7 +7,7 @@
   <h1><i>Results:</i></h1>
   <br>
   {% for i in range(size) %}
-  <div class="row container" style="background-color:burlywood;padding: 1em;border-radius: 1em;">
+  <div class="row container" style="">
     <div class=" col-4 col-md-2">
       <a href="/movie/{{ results[i].id }}">
         <img class="clickable" style="width:100%" src={{ results[i].poster_path }}>

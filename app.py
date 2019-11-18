@@ -115,6 +115,7 @@ def already_logged_in(f):
 def home():
     top_movies = tmdb.get_trending(timeframe='day')
     return render_template("home.html", top_movies=top_movies)
+
 ######################################### END ########################################################
 
 

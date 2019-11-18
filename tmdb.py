@@ -18,9 +18,9 @@ def get_json(url):
             response.close()
 
 
-def get_trending(timeframe='week', media_type='movie', count=18):
+def get_trending(timeframe='week', media_type='movie', count=15):
     trending_url = api_url + \
-        '%s/%s/%s?api_key=%s' % ('trending', media_type, timeframe, api_key)
+        '%s/%s/%s?api_key=%s&language=en-US' % ('trending', media_type, timeframe, api_key)
     json = get_json(trending_url)
     base_img_url = 'https://image.tmdb.org/t/p/w500/'
     movies = []
@@ -29,12 +29,12 @@ def get_trending(timeframe='week', media_type='movie', count=18):
                         (int(movie['id']), api_key))
         url = temp['results']
         movie['video_url'] = []
-        count = 0
+        ct = 0
         for k in url:
             movie['video_url'].append(
                 'https://www.youtube.com/embed/%s' % k["key"])
-            count += 1
-            if(count == 5):
+            ct += 1
+            if(ct == 5):
                 break
         movie['poster_path'] = base_img_url+str(movie['poster_path'])
         movies.append(movie)
